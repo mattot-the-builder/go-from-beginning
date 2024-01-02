@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
     // create array
+    var entries []string
 
     var response string
 
@@ -18,11 +19,15 @@ func main() {
             fmt.Scan(&response)
 
             // save entry to list
+            entries = append(entries, response)
 
             fmt.Println("Saving entry")
         } else if response == "list" {
 
             // list entries
+            for _, s := range entries {
+                fmt.Println(s)
+            }
 
             fmt.Println("Listing entries")
         } else {
