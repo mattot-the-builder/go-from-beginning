@@ -2,22 +2,47 @@ package main
 
 import "fmt"
 
-type Car struct {
-    speed int
-    model string
-    make string
+type Point struct {
+    x float32
+    y float32
 }
 
-type Runnable interface {
-    run()
+type Vehicle struct {
+    velocity float32
+    Point
 }
 
-func (c *Car) run() {
-    c.speed = 10
+type Spaceship interface {
+    fly()
+    land()
+    position() Point
+}
+
+func (v *Vehicle) fly() {
+    v.velocity = 10
+}
+
+
+func (v *Vehicle) land() {
+    v.velocity = 0
+}
+
+func (v Vehicle) position() Point {
+    return v.Point
 }
 
 func main() {
-    c := Car{make:"Ferrari", model: "F40", speed: 0}
-    c.run()
-    fmt.Println(c.speed)
+    v := Vehicle{
+        velocity: 0,
+        Point: Point{
+            x: 0,
+            y: 10,
+        },
+    }
+
+    v.fly()
+    fmt.Println(v.velocity)
+    v.land()
+    fmt.Println(v.velocity)
+    fmt.Println(v.position())
 }
