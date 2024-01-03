@@ -2,48 +2,22 @@ package main
 
 import "fmt"
 
-type Point struct {
-    x int
-    y int
+type Car struct {
+    speed int
+    model string
+    make string
 }
 
-type Shape interface {
-    area() int
-    location() Point
+type Runnable interface {
+    run()
 }
 
-type Rectangle struct {
-    x int
-    y int
-}
-
-type Square struct {
-    side int
-}
-
-func (r Rectangle) area() int {
-    return r.x * r.y
-}
-
-func (r Rectangle) location() Point {
-    return Point{ x: r.x, y: r.y}
-}
-
-func (s Square) area() int {
-    return s.side * s.side
-}
-
-func (s Square) location() Point {
-    return Point{x: s.side, y: s.side}
-}
-
-func printArea(s Shape) {
-    fmt.Println(s.area())
+func (c *Car) run() {
+    c.speed = 10
 }
 
 func main() {
-    var shape Shape = Rectangle{x: 5, y: 2}
-    var shape2 Shape = Square{side: 5}
-    printArea(shape)
-    printArea(shape2)
+    c := Car{make:"Ferrari", model: "F40", speed: 0}
+    c.run()
+    fmt.Println(c.speed)
 }
