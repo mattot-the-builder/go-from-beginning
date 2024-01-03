@@ -2,28 +2,26 @@ package main
 
 import (
     "fmt"
-    "io/ioutil"
     "encoding/json"
 )
 
-type Product struct {
-	Id   int    `json: "id"`
-	Name string `json: "name"`
-}
-
-type Products struct {
-	Products []Product `json: "products"`
+type Person struct {
+    Id int `json: "id"`
+    Name string `json: "name"`
 }
 
 func main() {
-	file, _ := ioutil.ReadFile("products.json")
+    aBoolean, _ := json.Marshal(true)
+    aString, _ := json.Marshal("a string")
 
-    data := Products{}
-
-    _ = json.Unmarshal([]byte(file), &data)
-
-    for i := 0; i < len(data.Products); i++ {
-        fmt.Println("Product Id: ", data.Products[i].Id)
-        fmt.Println("Name: ", data.Products[i].Name)
+    person := Person{
+        Id: 1,
+        Name: "a person",
     }
+
+    aPerson, _ := json.Marshal(&person)
+    fmt.Println(string(aBoolean))
+    fmt.Println(string(aString))
+    fmt.Println(string(aPerson))
+    fmt.Println(string(aPerson))
 }
