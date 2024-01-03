@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/softchris/math"
+)
 
 func main() {
-    fmt.Println("Hello mattot")
+    var sum int
+    sum += math.Add(1,2)
+    fmt.Println(sum)
 }
