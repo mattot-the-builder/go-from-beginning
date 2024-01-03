@@ -24,22 +24,35 @@ func main() {
 	//    }
 
 	var response string
-    var phonebook map[string]int
-
+    phonebook := map[string]string{}
 
 	for {
 		fmt.Println("Welcome to your phonebook.")
-		fmt.Println("Command> ")
+		fmt.Print("Command> ")
 		fmt.Scan(&response)
 
         if response == "quit" {
             break
         } else if response == "store" {
             // store
+
+            var name, contact string
+
+            fmt.Print("Enter contact : ")
+            fmt.Scan(&name, &contact)
+
+            phonebook[name] = contact
         } else if response == "list" {
             // list
+            for key, value := range phonebook {
+                fmt.Printf("%s %s\n", key, value)
+            }
         } else if response == "lookup" {
             // lookup name and number
+            fmt.Print("Enter name: ")
+            fmt.Scan(&response)
+
+            fmt.Printf("%s has number : %s\n",response ,phonebook[response])
         }
 
 	}
